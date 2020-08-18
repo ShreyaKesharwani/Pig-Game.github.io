@@ -62,8 +62,19 @@ document.querySelector('.btn-hold').addEventListener('click',function(){
     
     
     //Check if player won the game
-    
-    if (scores[activePLayer] >= 20) {
+    var input = document.querySelector('.final-score ').value;
+   var winningScore;
+        
+        //Undefined,0,null or "" are COERCED to false
+        //Anything else is COERCED to true
+        if(input){
+             winningScore=input;
+        } 
+        else{
+            winningScore=100;
+        }
+        
+    if (scores[activePLayer] >= winningScore){
         document.querySelector('#name-' + activePLayer).textContent = "Winner!!";
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePLayer + '-panel').classList.add('winner');
